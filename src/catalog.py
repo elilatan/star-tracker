@@ -1,4 +1,5 @@
-import numpy as numpy
+import numpy as np
+
 def load_catalog(path):
     values = []
     count = 0
@@ -20,7 +21,7 @@ def load_catalog(path):
             #RA is first column, DE is second, Mag is 7th
             ra_str = fields[0].strip()
             de_str = fields[1].strip()
-            mag_str = fields[6].stip()
+            mag_str = fields[6].strip()
 
             if not ra_str or not de_str or not mag_str:
                 drop_count += 1
@@ -30,7 +31,7 @@ def load_catalog(path):
             de = float(de_str)
             mag = float(mag_str)
 
-            values.apend([ra, de, mag])
+            values.append([ra, de, mag])
             count += 1
 
         print(f"Kept rows: {count}, Dropped rows: {drop_count}")
