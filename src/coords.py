@@ -41,4 +41,13 @@ if __name__ == "__main__":
     star_vectors = vector_conversion(stars[:, 0], stars[:, 1])
     star_norms = np.linalg.norm(star_vectors, axis=1)
     print(f"Maximum: {np.max(star_norms)}, Minimum: {np.min(star_norms)}")
+
+    #Checking for Polaris(North Star)
+    mask = stars[:, 1] > 85
+    near_pole = stars[mask]
+    index = np.argmin(near_pole[:, 2]) #finding the brightest star (has the lowest magnitude)
+    polaris = near_pole[index]
+    print(f"Polaris RA: {polaris[0]}, Polaris Dec: {polaris[1]}, Polaris Mag: {polaris[2]}")
+    polaris_vec = vector_conversion(polaris[0], polaris[1])
+    print(f"Polaris: {polaris_vec}")
     
